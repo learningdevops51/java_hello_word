@@ -1,18 +1,24 @@
-# Data Block
-data "aws_ami" "redhat" {
+data "aws_ami" "ubuntu" {
   most_recent = true
+
   filter {
     name   = "name"
-    values = ["RHEL-7.5_HVM_GA*"]
+    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
   }
+
   filter {
     name   = "virtualization-type"
     values = ["hvm"]
   }
-  owners = ["309956199498"]
+
+  owners = ["099720109477"] # Canonical
 }
-# resource block
-resource "aws_instance" "test" {
-  ami             = data.aws_ami.redhat.id
-  instance_type   = "t2.micro"
+
+resource "aws_instance" "web" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "t3.micro"
+
+  tags = {
+    Name = "HelloWorld"
+  }
 }
