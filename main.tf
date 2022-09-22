@@ -21,5 +21,4 @@ data "aws_ami" "redhat" {
 resource "aws_instance" "test" {
   ami             = data.aws_ami.redhat.id
   instance_type   = "t2.micro"
-  security_groups = [aws_security_group.web_traffic.name]
 }
