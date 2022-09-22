@@ -29,7 +29,6 @@ resource "aws_security_group" "web_traffic" {
   tags = {
     "Terraform" = "true"
   }
-}
 # Data Block
 data "aws_ami" "redhat" {
   most_recent = true
