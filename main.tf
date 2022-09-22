@@ -14,7 +14,7 @@ resource "aws_security_group" "web_traffic" {
   description = "inbound ports for ssh and standard http and everything outbound"
   dynamic "ingress" {iterator = port
     for_each = var.ingressrules
-    content {
+    content } {
       from_port   = port.value
       to_port     = port.value
       protocol    = "TCP"
