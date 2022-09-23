@@ -7,7 +7,7 @@ provider "aws" {
 # Create AWS ec2 instance
 resource "aws_instance" "my-ec2-instance" {
   ami           = var.ami_id
-  instance_type = var.instance_type
+  instance_type = t2.micro
   security_groups= [var.security_group]
   tags= {
     Name = var.tag_name
