@@ -4,6 +4,16 @@ provider "aws" {
   secret_key = "+pzP1aCNP8KREI5vcyGd6Rhhsy5hhXGbUfOumrCz"
 }
 
+# Create AWS ec2 instance
+resource "aws_instance" "my-ec2-instance" {
+  ami           = var.ami_id
+  instance_type = var.instance_type
+  security_groups= [var.security_group]
+  tags= {
+    Name = var.tag_name
+  }
+}
+
 #Create security group with firewall rules
 resource "aws_security_group" "my_security_group" {
   name        = var.security_group
@@ -36,13 +46,5 @@ resource "aws_security_group" "my_security_group" {
   }
 }
 
-# Create AWS ec2 instance
-resource "aws_instance" "my-ec2-instance" {
-  ami           = var.ami_id
-  instance_type = var.instance_type
-  security_groups= [var.security_group]
-  tags= {
-    Name = var.tag_name
-  }
-}
+
 
