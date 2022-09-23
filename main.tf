@@ -37,7 +37,7 @@ resource "aws_security_group" "my_security_group" {
 }
 
 # Create AWS ec2 instance
-resource "aws_instance" "myFirstInstance" {
+resource "aws_instance" "my-ec2-instance" {
   ami           = var.ami_id
   instance_type = var.instance_type
   security_groups= [var.security_group]
